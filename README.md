@@ -25,8 +25,11 @@ You can find a detailed [project rubric, here](https://review.udacity.com/#!/rub
 
 ## Setup the Environment
 
-* Create a virtualenv and activate it
-* Run `make install` to install the necessary dependencies
+1. Clone this repository
+2. Create a virtualenv .devops and activate
+  - python3 -m venv ~/.devops
+  - source ~/.devops/bin/activate
+3. Run `make install` to install the necessary dependencies
 
 ### Running `app.py`
 
@@ -37,6 +40,38 @@ You can find a detailed [project rubric, here](https://review.udacity.com/#!/rub
 ### Kubernetes Steps
 
 * Setup and Configure Docker locally
+```
+sudo apt-get remove docker docker-engine docker.io containerd runc
+sudo apt-get update
+
+ sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+```
+
+Add Dockers official GPG Key
+```
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+```
+
+Installing Docker
+```
+ sudo apt-get update
+ sudo apt-get install docker-ce docker-ce-cli containerd.io
+```
+
 * Setup and Configure Kubernetes locally
+```
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube
+sudo cp minikube /usr/local/bin && rm minikube
+```
+
+
 * Create Flask app in Container
+Just run `./run_docker.sh` in shell. (Leave Shell open)
+
 * Run via kubectl
+Run `./run_kubernetes.sh` in Shell (Leave Shell open)
